@@ -29,7 +29,7 @@ export default function DesejoItem({
         onPress={() => aoAlternarConcluida(desejo.id)}
       >
         <Text style={styles.textoBotaoConcluir}>
-          {desejo.concluida ? "Concluído" : "Concluir"}
+          {desejo.concluido ? "Concluído" : "Concluir"}
         </Text>
       </TouchableOpacity>
 

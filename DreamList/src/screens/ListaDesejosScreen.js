@@ -69,7 +69,8 @@ export default function ListaDesejosScreen() {
     const novoDesejo = {
       id: Date.now().toString(),
       texto,
-      concluida: false,
+      concluido: false,
+      avaliacao: 0,
     };
 
     setDesejo((desejosAtuais) => [...desejosAtuais, novoDesejo]);
@@ -86,6 +87,19 @@ export default function ListaDesejosScreen() {
   function alternarConcluida(id) {
     setDesejo((desejosAtuais) => desejosAtuais.map((desejo) => desejo.id === id ? { ...desejo, concluido: !desejo.concluido } : desejo))
 
+  }
+
+  function avaliarDesejo(id, avaliacao) {
+    setDesejo((desejosAtuais) =>
+      desejosAtuais.map((desejo) =>
+        desejo.id === id
+          ? {
+              ...desejo,
+              avaliacao: avaliacao,
+            }
+          : desejo
+      )
+    );
   }
 
   function excluirDesejo(id) {
@@ -141,6 +155,7 @@ export default function ListaDesejosScreen() {
             aoAlternarConcluida={alternarConcluida}
             aoExcluir={excluirDesejo}
             aoEditar={editarDesejo}
+            aoAvaliar={avaliarDesejo}
           />
         )}
         ListEmptyComponent={
