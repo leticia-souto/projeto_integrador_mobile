@@ -156,33 +156,70 @@ export default function ListaDesejosScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#9B7EDE", 
+    paddingTop: Platform.OS === "ios" ? 60 : 40, 
+    paddingBottom: 28, 
+    paddingHorizontal: 24, 
+    borderBottomLeftRadius: 28, 
+    borderBottomRightRadius: 28,
 
   },
   titulo: {
+    color: "#FFFFFF", 
+    fontSize: 30, 
+    fontWeight: "800", 
+    letterSpacing: 0.3,
 
   },
   formulario: {
-
+    backgroundColor: "#FFFFFF", 
+    borderRadius: 18,
+     padding: 8, 
+     flexDirection: "row", 
+     alignItems: "center", 
+     shadowColor: "#3F3852",
   },
   input: {
-
+    flex: 1, 
+    height: 48, 
+    paddingHorizontal: 14, 
+    color: "#3F3852", 
+    fontSize: 15,
   },
   botaoAdicionar:{
-
+    backgroundColor: "#9B7EDE", 
+    paddingHorizontal: 18, 
+    height: 46, 
+    borderRadius: 14, 
+    justifyContent: "center", 
+    alignItems: "center",
   },
   textoBotaoAdicionar:{
-
+    color: "#FFFFFF", 
+    fontSize: 14, 
+    fontWeight: "700",
   },
   listaConteudo:{
-
+    paddingTop: 18, 
+    paddingBottom: 30,
   },
   listaVazia:{
-
+    color: "#3F3852", 
+    fontSize: 17, 
+    fontWeight: "700", 
+    textAlign: "center",
   },
   botaoLimpar:{
+    alignSelf: "flex-end", 
+    marginTop: 12, 
+    paddingVertical: 6, 
+    paddingHorizontal: 4,
 
   },
   textoBotaoLimpar:{
+    color: "#9B7EDE", 
+    fontSize: 13, 
+    fontWeight: "600",
 
   },
   
