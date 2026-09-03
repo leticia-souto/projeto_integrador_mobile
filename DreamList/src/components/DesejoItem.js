@@ -13,6 +13,15 @@ export default function DesejoItem({ desejo, aoAlternarConcluida, aoExcluir, aoE
       </TouchableOpacity>
 
       <TouchableOpacity
+      style={styles.botaoConcluir}
+      onPress={() => aoAlternarConcluida(desejo.id)}
+    >
+      <Text style={styles.textoBotaoConcluir}>
+        {desejo.concluida ? "Concluído" : "Concluir"}
+      </Text>
+    </TouchableOpacity>
+
+      <TouchableOpacity
         style={styles.botaoExcluir}
         onPress={() => aoExcluir(desejo.id)}
       >
