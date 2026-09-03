@@ -10,8 +10,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import TarefaItem from "../components/DesejoItem";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DesejoItem from "../components/DesejoItem";
 
 const CHAVE_STORAGE = "DreamList: desejos";
 
@@ -96,12 +96,94 @@ export default function ListaDesejosScreen() {
     setDesejo([])
   }
 
-  return(
+  return (
     <KeyboardAvoidingView
-    style={styles.container}
-    behavior={Platform.OS === "ios" ? "padding" : undefined}
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
 
+      <Text style={styles.titulo}>DreamList - Lista de Desejos</Text>
+
+      <View style={styles.formulario}>
+        <TextInput style={styles.input}
+          placeholder="Digite um novo desejo..."
+          value={textoInput}
+          onChangeText={setTextoInput}
+          onSubmitEditing={adicionarDesejo}
+          returnKeyType="done"
+        />
+        <TouchableOpacity
+          style={styles.botaoAdicionar}
+          onPress={adicionarDesejo}
+        >
+          <Text style={styles.textoBotaoAdicionar}>
+            {desejoEditando !== null ? "Salvar" : "Adicionar"}
+          </Text>
+        </TouchableOpacity>
+
+      </View>
+
+      <TouchableOpacity
+        style={styles.botaoLimpar}
+        onPress={limparDesejos}
+      >
+        <Text style={styles.textoBotaoLimpar}>
+          Limpar todos os Desejos
+        </Text>
+      </TouchableOpacity>
+
+      <FlatList
+        data={desejo}
+        keyExtractor={(desejo) => desejo.id}
+        renderItem={({ item }) => (
+          <DesejoItem
+            desejo={item}
+            aoAlternarConcluida={alternarConcluida}
+            aoExcluir={excluirDesejo}
+            aoEditar={editarDesejo}
+          />
+        )}
+        ListEmptyComponent={
+          <Text style={styles.listaVazia}>
+            Nenhum desejo cadastrado ainda.
+          </Text>
+        }
+        contentContainerStyle={styles.listaConteudo}
+      />
     </KeyboardAvoidingView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+
+  },
+  titulo: {
+
+  },
+  formulario: {
+
+  },
+  input: {
+
+  },
+  botaoAdicionar:{
+
+  },
+  textoBotaoAdicionar:{
+
+  },
+  listaConteudo:{
+
+  },
+  listaVazia:{
+
+  },
+  botaoLimpar:{
+
+  },
+  textoBotaoLimpar:{
+
+  },
+  
+})
