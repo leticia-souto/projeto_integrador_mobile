@@ -5,6 +5,7 @@ export default function DesejoItem({
   aoAlternarConcluida,
   aoExcluir,
   aoEditar,
+  aoAvaliar,
 }) {
   return (
     <View style={styles.item}>
@@ -43,14 +44,29 @@ export default function DesejoItem({
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.botaoEditar}
-          onPress={() => aoEditar(desejo)}
-        >
-          <Text style={styles.textoBotaoEditar}>
-            Editar
-          </Text>
-        </TouchableOpacity>
+        {desejo.concluida ? (
+          <View style={styles.avaliacao}>
+            {[1, 2, 3, 4, 5].map((numero) => (
+              <TouchableOpacity
+                key={numero}
+                onPress={() => aoAvaliar(desejo.id, numero)}
+              >
+                <Text style={styles.estrela}>
+                  {numero <= (desejo.avaliacao || 0) ? "★" : "☆"}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ) : (
+          <TouchableOpacity
+            style={styles.botaoEditar}
+            onPress={() => aoEditar(desejo)}
+          >
+            <Text style={styles.textoBotaoEditar}>
+              Editar
+            </Text>
+          </TouchableOpacity>
+        )}
 
       </View>
     </View>
@@ -94,13 +110,10 @@ const styles = StyleSheet.create({
   botaoConcluir: {
     width: "100%",
     height: 38,
-
     backgroundColor: "#A8DCC8",
     borderRadius: 10,
-
     justifyContent: "center",
     alignItems: "center",
-
     marginBottom: 8,
   },
 
@@ -119,10 +132,8 @@ const styles = StyleSheet.create({
   botaoExcluir: {
     flex: 1,
     height: 38,
-
     backgroundColor: "#E98B9B",
     borderRadius: 10,
-
     justifyContent: "center",
     alignItems: "center",
   },
@@ -136,10 +147,8 @@ const styles = StyleSheet.create({
   botaoEditar: {
     flex: 1,
     height: 38,
-
     backgroundColor: "#C9B8F4",
     borderRadius: 10,
-
     justifyContent: "center",
     alignItems: "center",
   },
@@ -148,5 +157,21 @@ const styles = StyleSheet.create({
     color: "#3F3852",
     fontSize: 13,
     fontWeight: "700",
+  },
+
+  avaliacao: {
+    flex: 1,
+    height: 38,
+    backgroundColor: "#FAF8FF",
+    borderRadius: 10,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 2,
+  },
+
+  estrela: {
+    color: "#9B7EDE",
+    fontSize: 22,
   },
 });
