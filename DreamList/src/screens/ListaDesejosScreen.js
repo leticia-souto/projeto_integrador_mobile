@@ -116,7 +116,7 @@ export default function ListaDesejosScreen() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
 
-      <Text style={styles.titulo}>DreamList - Lista de Desejos</Text>
+      <Text style={styles.titulo}>DreamList</Text>
 
       <View style={styles.formulario}>
         <TextInput style={styles.input}
@@ -184,7 +184,6 @@ const styles = StyleSheet.create({
     fontSize: 30, 
     fontWeight: "800", 
     letterSpacing: 0.3,
-
   },
   formulario: {
     backgroundColor: "#FFFFFF", 
