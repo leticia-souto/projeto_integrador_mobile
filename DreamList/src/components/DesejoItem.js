@@ -17,7 +17,7 @@ export default function DesejoItem({
         <Text
           style={[
             styles.texto,
-            desejo.concluida && styles.textoConcluido,
+            desejo.concluido && styles.textoConcluido,
           ]}
         >
           {desejo.texto}
@@ -44,7 +44,7 @@ export default function DesejoItem({
           </Text>
         </TouchableOpacity>
 
-        {desejo.concluida ? (
+        {desejo.concluido ? (
           <View style={styles.avaliacao}>
             {[1, 2, 3, 4, 5].map((numero) => (
               <TouchableOpacity
